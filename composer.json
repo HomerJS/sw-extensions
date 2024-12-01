@@ -1,0 +1,27 @@
+{
+    "name": "ihor/frame2",
+    "description": "ihor/frame2",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "~6.6.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "Ihor\\Frame2\\IhorExtension",
+        "label": {
+            "de-DE": "Frame 2 plugin",
+            "en-GB": "Frame plugin"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Ihor\\Frame2\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ihor\\Frame2\\Tests\\": "tests/"
+        }
+    }
+}
