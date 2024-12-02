@@ -9,7 +9,7 @@ use Shopware\Core\Framework\Plugin\Context\InstallContext;
 use Shopware\Core\Framework\Plugin\Context\UninstallContext;
 use Shopware\Core\Framework\Plugin\Context\UpdateContext;
 
-class IhorExtension extends Plugin
+class IhorFrame2Plugin extends Plugin
 {
     public function install(InstallContext $installContext): void
     {

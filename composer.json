@@ -8,7 +8,7 @@
         "shopware/core": "~6.6.0"
     },
     "extra": {
-        "shopware-plugin-class": "Ihor\\Frame2\\IhorExtension",
+        "shopware-plugin-class": "Ihor\\Frame2\\IhorFrame2Plugin",
         "label": {
             "de-DE": "Frame 2 plugin",
             "en-GB": "Frame plugin"
