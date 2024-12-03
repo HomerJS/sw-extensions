@@ -10,17 +10,17 @@
             <tag name="shopware.rule.definition" />
         </service>
 
-<!--&lt;!&ndash;        Add new Api&ndash;&gt;-->
-<!--        <service id="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRoute" public="true">-->
-<!--        </service>-->
+<!--        Add new Api-->
+        <service id="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRoute" public="true">
+        </service>
 
-<!--        &lt;!&ndash;        Add new route&ndash;&gt;-->
-<!--        <service id="Ihor\Frame2\Storefront\Controller\MyController" public="true">-->
-<!--            <argument type="service" id="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRoute" />-->
-<!--            <call method="setContainer">-->
-<!--                <argument type="service" id="service_container"/>-->
-<!--            </call>-->
-<!--        </service>-->
+        <!--        Add new route-->
+        <service id="Ihor\Frame2\Storefront\Controller\ExampleController" public="true">
+            <argument type="service" id="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRoute" />
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
 
 <!--&lt;!&ndash;        Cache route&ndash;&gt;-->
 <!--        <service id="Ihor\Frame2\Core\Content\Example\SalesChannel\CachedExampleRoute" decorates="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRoute" decoration-priority="-1000">-->
