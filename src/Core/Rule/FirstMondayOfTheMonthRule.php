@@ -44,7 +44,7 @@ class FirstMondayOfTheMonthRule extends Rule
         ];
     }
 
-    private function isCurrentlyFirstMondayOfTheMonth($dateString)
+    private function isCurrentlyFirstMondayOfTheMonth($dateString): bool
     {
         $date = new \DateTime($dateString);
         $dayOfWeek = (int) $date->format('w');

@@ -1,4 +1,3 @@
-// <plugin root>/src/Resources/app/administration/src/core/component/swag-first-monday/index.js
 import template from './swag-first-monday.html.twig';
 
 Shopware.Component.extend('swag-first-monday', 'sw-condition-base', {
