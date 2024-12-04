@@ -22,14 +22,18 @@
             </call>
         </service>
 
-<!--&lt;!&ndash;        Cache route&ndash;&gt;-->
-<!--        <service id="Ihor\Frame2\Core\Content\Example\SalesChannel\CachedExampleRoute" decorates="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRoute" decoration-priority="-1000">-->
-<!--            <argument type="service" id="Ihor\Frame2\Core\Content\Example\SalesChannel\CachedExampleRoute.inner"/>-->
-<!--            <argument type="service" id="cache.object"/>-->
-<!--            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Cache\EntityCacheKeyGenerator"/>-->
-<!--            <argument type="service" id="Shopware\Core\Framework\Adapter\Cache\CacheTracer"/>-->
-<!--            <argument type="service" id="logger" />-->
-<!--        </service>-->
+<!--        Cache route-->
+        <service id="Ihor\Frame2\Core\Content\Example\SalesChannel\CachedExampleRoute" decorates="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRoute" decoration-priority="-1000" public="true">
+            <argument type="service" id="Ihor\Frame2\Core\Content\Example\SalesChannel\CachedExampleRoute.inner"/>
+            <argument type="service" id="cache.object"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Cache\EntityCacheKeyGenerator"/>
+            <argument type="service" id="Shopware\Core\Framework\Adapter\Cache\CacheTracer"/>
+            <argument type="service" id="logger" />
+        </service>
 
+<!--        Invalidate cache-->
+        <service id="Ihor\Frame2\Subscriber\CacheInvalidationSubscriber">
+            <argument type="service" id="Shopware\Core\Framework\Adapter\Cache\CacheInvalidator"/>
+        </service>
     </services>
 </container>
