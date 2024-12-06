@@ -35,5 +35,11 @@
         <service id="Ihor\Frame2\Subscriber\CacheInvalidationSubscriber">
             <argument type="service" id="Shopware\Core\Framework\Adapter\Cache\CacheInvalidator"/>
         </service>
+
+<!--        Rewrite api route-->
+        <service id="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRouteDecorator" decorates="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRoute" public="true">
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRouteDecorator.inner"/>
+        </service>
     </services>
 </container>
