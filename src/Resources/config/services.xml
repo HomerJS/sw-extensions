@@ -41,5 +41,20 @@
             <argument type="service" id="product.repository"/>
             <argument type="service" id="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRouteDecorator.inner"/>
         </service>
+
+<!-- File Reader -->
+        <service id="Ihor\Frame2\Service\ExampleFilesystemService">
+<!--            <argument type="service" id="ihor_frame2_plugin.filesystem.public"/>-->
+<!--            <argument type="service" id="ihor_frame2_plugin.filesystem.private"/>-->
+
+            <argument type="service" id="shopware.filesystem.public"/>
+            <argument type="service" id="shopware.filesystem.private"/>
+
+        </service>
+
+        <service id="Ihor\Frame2\Command\TestCommand">
+            <tag name="console.command" />
+            <argument type="service" id="Ihor\Frame2\Service\ExampleFilesystemService" />
+        </service>
     </services>
 </container>
