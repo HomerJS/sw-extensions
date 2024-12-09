@@ -12,6 +12,8 @@
 
 <!--        Add new Api-->
         <service id="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRoute" public="true">
+            <argument type="service" id="Shopware\Core\Framework\RateLimiter\RateLimiter" />
+            <argument type="service" id="Symfony\Component\HttpFoundation\RequestStack" />
         </service>
 
         <!--        Add new route-->
@@ -23,13 +25,13 @@
         </service>
 
 <!--        Cache route-->
-        <service id="Ihor\Frame2\Core\Content\Example\SalesChannel\CachedExampleRoute" decorates="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRoute" decoration-priority="-1000" public="true">
-            <argument type="service" id="Ihor\Frame2\Core\Content\Example\SalesChannel\CachedExampleRoute.inner"/>
-            <argument type="service" id="cache.object"/>
-            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Cache\EntityCacheKeyGenerator"/>
-            <argument type="service" id="Shopware\Core\Framework\Adapter\Cache\CacheTracer"/>
-            <argument type="service" id="logger" />
-        </service>
+<!--        <service id="Ihor\Frame2\Core\Content\Example\SalesChannel\CachedExampleRoute" decorates="Ihor\Frame2\Core\Content\Example\SalesChannel\ExampleRoute" decoration-priority="-1000" public="true">-->
+<!--            <argument type="service" id="Ihor\Frame2\Core\Content\Example\SalesChannel\CachedExampleRoute.inner"/>-->
+<!--            <argument type="service" id="cache.object"/>-->
+<!--            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Cache\EntityCacheKeyGenerator"/>-->
+<!--            <argument type="service" id="Shopware\Core\Framework\Adapter\Cache\CacheTracer"/>-->
+<!--            <argument type="service" id="logger" />-->
+<!--        </service>-->
 
 <!--        Invalidate cache-->
         <service id="Ihor\Frame2\Subscriber\CacheInvalidationSubscriber">

@@ -12,6 +12,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\Util\Json;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Symfony\Component\Cache\Adapter\TagAwareAdapterInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Cache\ItemInterface;
 
@@ -53,22 +54,22 @@ class CachedExampleRoute extends AbstractExampleRoute
     }
 
     #[Route(path: '/store-api/example', name: 'store-api.example.search', defaults: ['_entity' => 'product'], methods: ['GET','POST'])]
-    public function load(Criteria $criteria, SalesChannelContext $context): ExampleRouteResponse
+    public function load(Criteria $criteria, SalesChannelContext $context, Request $request): ExampleRouteResponse
     {
         // The context is provided with a state where the route cannot be cached
         if ($context->hasState(...$this->states)) {
-            return $this->getDecorated()->load($criteria, $context);
+            return $this->getDecorated()->load($criteria, $context, $request);
         }
 
         $key = $this->generateKey($context, $criteria);
 
         if ($key === null) {
-            return $this->getDecorated()->load($criteria, $context);
+            return $this->getDecorated()->load($criteria, $context, $request);
         }
 
-        $value = $this->cache->get($key, function (ItemInterface $item) use ($context, $criteria) {
+        $value = $this->cache->get($key, function (ItemInterface $item) use ($context, $criteria, $request) {
             $name = self::buildName();
-            $response = $this->tracer->trace($name, fn () => $this->getDecorated()->load($criteria, $context));
+            $response = $this->tracer->trace($name, fn () => $this->getDecorated()->load($criteria, $context, $request));
 
             $item->tag(array_merge(
             // get traced tags and configs
