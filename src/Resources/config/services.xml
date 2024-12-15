@@ -58,5 +58,13 @@
             <tag name="console.command" />
             <argument type="service" id="Ihor\Frame2\Service\ExampleFilesystemService" />
         </service>
+
+<!--        Health Checker -->
+        <service id="Ihor\Frame2\SystemCheck\Checker">
+            <argument>%shopware.filesystem.public.type%</argument>
+            <argument>%shopware.filesystem.public.config.root%</argument>
+            <argument>50</argument>
+            <tag name="shopware.system_check"/>
+        </service>
     </services>
 </container>
